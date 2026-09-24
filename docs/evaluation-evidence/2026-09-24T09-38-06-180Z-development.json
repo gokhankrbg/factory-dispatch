@@ -1,0 +1,365 @@
+{
+  "runMeta": {
+    "timestamp": "2026-09-24T09:38:06.180Z",
+    "group": "development",
+    "caseCount": 12,
+    "requestedModel": "jev-latest",
+    "returnedModelVersions": [
+      "jev-1.13.0"
+    ],
+    "reviewThreshold": 0.7,
+    "questionConfigHash": "e4072d6e6f5e948bfe892505d67d302c4e5901242856a8ab21ef9f1a6f49a8f7",
+    "datasetHash": "a04fd2cc564f103da171795be0e3a7b44925dac142131d213ebadf88f3c1ecd2"
+  },
+  "metrics": {
+    "totalCases": 12,
+    "attempted": 12,
+    "successful": 12,
+    "failed": 0,
+    "unattempted": 0,
+    "modelChoiceAgreement": {
+      "count": 12,
+      "of": 12,
+      "rate": 1
+    },
+    "humanReviewShare": {
+      "count": 3,
+      "of": 12,
+      "rate": 0.25
+    },
+    "autoRoutingCoverage": {
+      "count": 9,
+      "of": 12,
+      "rate": 0.75
+    },
+    "finalTeamAgreementAmongAutoRouted": {
+      "count": 9,
+      "of": 9,
+      "rate": 1
+    },
+    "incorrectlyAutoRoutedExpectedHumanReview": {
+      "count": 0,
+      "of": 3,
+      "rate": 0
+    },
+    "latency": {
+      "n": 12,
+      "medianMs": 244,
+      "p95Ms": 841
+    }
+  },
+  "results": [
+    {
+      "id": "dev-maintenance-01",
+      "report": "The main conveyor stopped abruptly and there is a loud grinding sound coming from the gearbox.",
+      "expectedModelChoice": "maintenance",
+      "group": "development",
+      "rationale": "Clear equipment malfunction with abnormal noise.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "maintenance",
+        "confidence": 1,
+        "probabilities": {
+          "maintenance": 1,
+          "quality": 0,
+          "logistics": 0,
+          "human_review": 0
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 841,
+        "routing": {
+          "finalTeam": "maintenance",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "dev-maintenance-02",
+      "report": "Pump 3 tripped twice this morning and won't hold pressure anymore.",
+      "expectedModelChoice": "maintenance",
+      "group": "development",
+      "rationale": "Equipment malfunction (tripping, pressure loss); root cause unknown but the equipment symptom identifies maintenance.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "maintenance",
+        "confidence": 1,
+        "probabilities": {
+          "maintenance": 1,
+          "quality": 0,
+          "logistics": 0,
+          "human_review": 0
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 237,
+        "routing": {
+          "finalTeam": "maintenance",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "dev-maintenance-03",
+      "report": "The packaging robot arm stopped mid-cycle and I don't know why.",
+      "expectedModelChoice": "maintenance",
+      "group": "development",
+      "rationale": "Unknown root cause with a clear equipment stoppage symptom — maintenance per policy even without a known cause.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "maintenance",
+        "confidence": 0.98,
+        "probabilities": {
+          "maintenance": 0.99,
+          "quality": 0,
+          "logistics": 0,
+          "human_review": 0.01
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 270,
+        "routing": {
+          "finalTeam": "maintenance",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "dev-quality-01",
+      "report": "Printed expiration dates on the film wrapping are smudged and hard to read on this batch.",
+      "expectedModelChoice": "quality",
+      "group": "development",
+      "rationale": "Printing/label defect on the product.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "quality",
+        "confidence": 1,
+        "probabilities": {
+          "maintenance": 0,
+          "quality": 1,
+          "logistics": 0,
+          "human_review": 0
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 237,
+        "routing": {
+          "finalTeam": "quality",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "dev-quality-02",
+      "report": "Several boxes from the last pallet have the wrong barcode printed on the label.",
+      "expectedModelChoice": "quality",
+      "group": "development",
+      "rationale": "Label/specification defect, no equipment fault reported.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "quality",
+        "confidence": 1,
+        "probabilities": {
+          "maintenance": 0,
+          "quality": 1,
+          "logistics": 0,
+          "human_review": 0
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 243,
+        "routing": {
+          "finalTeam": "quality",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "dev-quality-03",
+      "report": "The color of the coating on today's run looks noticeably off compared to the sample sheet.",
+      "expectedModelChoice": "quality",
+      "group": "development",
+      "rationale": "Product specification deviation.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "quality",
+        "confidence": 1,
+        "probabilities": {
+          "maintenance": 0,
+          "quality": 1,
+          "logistics": 0,
+          "human_review": 0
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 268,
+        "routing": {
+          "finalTeam": "quality",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "dev-logistics-01",
+      "report": "We are out of shrink wrap at station 5; the sealer is working fine but sits idle waiting for stock.",
+      "expectedModelChoice": "logistics",
+      "group": "development",
+      "rationale": "Equipment waiting for missing materials — stated cause is a material shortage, not an equipment fault.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "logistics",
+        "confidence": 1,
+        "probabilities": {
+          "maintenance": 0,
+          "quality": 0,
+          "logistics": 1,
+          "human_review": 0
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 230,
+        "routing": {
+          "finalTeam": "logistics",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "dev-logistics-02",
+      "report": "The forklift bringing pallets from the warehouse is delayed, so the line has nothing to package.",
+      "expectedModelChoice": "logistics",
+      "group": "development",
+      "rationale": "Material movement / replenishment delay.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "logistics",
+        "confidence": 0.99,
+        "probabilities": {
+          "maintenance": 0,
+          "quality": 0,
+          "logistics": 1,
+          "human_review": 0
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 245,
+        "routing": {
+          "finalTeam": "logistics",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "dev-logistics-03",
+      "report": "Raw material bins for line 1 were not restocked overnight and production can't start.",
+      "expectedModelChoice": "logistics",
+      "group": "development",
+      "rationale": "Inventory availability problem.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "logistics",
+        "confidence": 1,
+        "probabilities": {
+          "maintenance": 0,
+          "quality": 0,
+          "logistics": 1,
+          "human_review": 0
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 230,
+        "routing": {
+          "finalTeam": "logistics",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "dev-human_review-01",
+      "report": "Something feels off on the floor today but I can't pinpoint what.",
+      "expectedModelChoice": "human_review",
+      "group": "development",
+      "rationale": "Truly vague — insufficient information to identify a team.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "human_review",
+        "confidence": 0.97,
+        "probabilities": {
+          "maintenance": 0.02,
+          "quality": 0,
+          "logistics": 0,
+          "human_review": 0.98
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 296,
+        "routing": {
+          "finalTeam": "human_review",
+          "reasonCode": "model_requested_review",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "dev-human_review-02",
+      "report": "Planned changeover in progress, line paused for a scheduled maintenance window, nothing wrong reported.",
+      "expectedModelChoice": "human_review",
+      "group": "development",
+      "rationale": "Planned normal event with no reported fault, despite mentioning \"maintenance window\".",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "human_review",
+        "confidence": 1,
+        "probabilities": {
+          "maintenance": 0,
+          "quality": 0,
+          "logistics": 0,
+          "human_review": 1
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 242,
+        "routing": {
+          "finalTeam": "human_review",
+          "reasonCode": "model_requested_review",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "dev-human_review-03",
+      "report": "There's a disagreement between two shifts about whether it's the equipment or the batch that's the problem; both look plausible.",
+      "expectedModelChoice": "human_review",
+      "group": "development",
+      "rationale": "Competing issues with no single clearly appropriate first team.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "human_review",
+        "confidence": 0.98,
+        "probabilities": {
+          "maintenance": 0.01,
+          "quality": 0.01,
+          "logistics": 0,
+          "human_review": 0.98
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 436,
+        "routing": {
+          "finalTeam": "human_review",
+          "reasonCode": "model_requested_review",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    }
+  ]
+}

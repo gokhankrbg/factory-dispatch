@@ -1,0 +1,365 @@
+{
+  "runMeta": {
+    "timestamp": "2026-09-24T09:40:00.321Z",
+    "group": "holdout",
+    "caseCount": 12,
+    "requestedModel": "jev-latest",
+    "returnedModelVersions": [
+      "jev-1.13.0"
+    ],
+    "reviewThreshold": 0.7,
+    "questionConfigHash": "e4072d6e6f5e948bfe892505d67d302c4e5901242856a8ab21ef9f1a6f49a8f7",
+    "datasetHash": "07d0cbf00c449097f05b31be734455a591c8a62c95863dd81004096cbc33e803"
+  },
+  "metrics": {
+    "totalCases": 12,
+    "attempted": 12,
+    "successful": 12,
+    "failed": 0,
+    "unattempted": 0,
+    "modelChoiceAgreement": {
+      "count": 12,
+      "of": 12,
+      "rate": 1
+    },
+    "humanReviewShare": {
+      "count": 3,
+      "of": 12,
+      "rate": 0.25
+    },
+    "autoRoutingCoverage": {
+      "count": 9,
+      "of": 12,
+      "rate": 0.75
+    },
+    "finalTeamAgreementAmongAutoRouted": {
+      "count": 9,
+      "of": 9,
+      "rate": 1
+    },
+    "incorrectlyAutoRoutedExpectedHumanReview": {
+      "count": 0,
+      "of": 3,
+      "rate": 0
+    },
+    "latency": {
+      "n": 12,
+      "medianMs": 298,
+      "p95Ms": 795
+    }
+  },
+  "results": [
+    {
+      "id": "holdout-maintenance-01",
+      "report": "Line 2's motor started smoking briefly before the operator hit the emergency stop.",
+      "expectedModelChoice": "maintenance",
+      "group": "holdout",
+      "rationale": "Clear electrical/mechanical fault.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "maintenance",
+        "confidence": 1,
+        "probabilities": {
+          "maintenance": 1,
+          "quality": 0,
+          "logistics": 0,
+          "human_review": 0
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 707,
+        "routing": {
+          "finalTeam": "maintenance",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "holdout-maintenance-02",
+      "report": "The filling machine is making a rattling noise it never made before, though everything still appears to be running.",
+      "expectedModelChoice": "maintenance",
+      "group": "holdout",
+      "rationale": "Abnormal equipment noise, even though the machine is still operating.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "maintenance",
+        "confidence": 1,
+        "probabilities": {
+          "maintenance": 1,
+          "quality": 0,
+          "logistics": 0,
+          "human_review": 0
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 468,
+        "routing": {
+          "finalTeam": "maintenance",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "holdout-maintenance-03",
+      "report": "Press #4 shut down on its own twice this shift; no error code showing.",
+      "expectedModelChoice": "maintenance",
+      "group": "holdout",
+      "rationale": "Unknown root cause but a clear equipment stoppage symptom.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "maintenance",
+        "confidence": 1,
+        "probabilities": {
+          "maintenance": 1,
+          "quality": 0,
+          "logistics": 0,
+          "human_review": 0
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 249,
+        "routing": {
+          "finalTeam": "maintenance",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "holdout-quality-01",
+      "report": "Carton dimensions are 2mm off spec on the current batch, though the machine settings weren't changed.",
+      "expectedModelChoice": "quality",
+      "group": "holdout",
+      "rationale": "Specification defect; explicit negation that machine settings changed points away from maintenance.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "quality",
+        "confidence": 0.99,
+        "probabilities": {
+          "maintenance": 0,
+          "quality": 1,
+          "logistics": 0,
+          "human_review": 0
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 276,
+        "routing": {
+          "finalTeam": "quality",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "holdout-quality-02",
+      "report": "Customer complaint: the printed lot number on yesterday's shipment doesn't match the production log.",
+      "expectedModelChoice": "quality",
+      "group": "holdout",
+      "rationale": "Labeling/record defect on shipped product.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "quality",
+        "confidence": 1,
+        "probabilities": {
+          "maintenance": 0,
+          "quality": 1,
+          "logistics": 0,
+          "human_review": 0
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 254,
+        "routing": {
+          "finalTeam": "quality",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "holdout-quality-03",
+      "report": "The new roll of labels is printing blurry text, but the printer itself seems to be running fine.",
+      "expectedModelChoice": "quality",
+      "group": "holdout",
+      "rationale": "Label defect without a clearly dominant equipment fault — incidental mention that the printer is fine argues against maintenance.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "quality",
+        "confidence": 0.98,
+        "probabilities": {
+          "maintenance": 0.01,
+          "quality": 0.98,
+          "logistics": 0.01,
+          "human_review": 0
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 306,
+        "routing": {
+          "finalTeam": "quality",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "holdout-logistics-01",
+      "report": "Packaging tape ran out mid-shift and the sealer, which works fine, is now idle.",
+      "expectedModelChoice": "logistics",
+      "group": "holdout",
+      "rationale": "Negation of an equipment fault (\"works fine\") plus a stated material shortage as the cause of the idle equipment.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "logistics",
+        "confidence": 0.99,
+        "probabilities": {
+          "maintenance": 0,
+          "quality": 0,
+          "logistics": 1,
+          "human_review": 0
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 303,
+        "routing": {
+          "finalTeam": "logistics",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "holdout-logistics-02",
+      "report": "Incoming components for the assembly cell haven't arrived from the supplier since yesterday.",
+      "expectedModelChoice": "logistics",
+      "group": "holdout",
+      "rationale": "Supply/replenishment delay.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "logistics",
+        "confidence": 1,
+        "probabilities": {
+          "maintenance": 0,
+          "quality": 0,
+          "logistics": 1,
+          "human_review": 0
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 283,
+        "routing": {
+          "finalTeam": "logistics",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "holdout-logistics-03",
+      "report": "The AGV shuttle is idle because there is no inventory queued at the pickup point.",
+      "expectedModelChoice": "logistics",
+      "group": "holdout",
+      "rationale": "Incidental mention of equipment (\"AGV shuttle\") but the stated cause is an inventory shortage, not equipment fault.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "logistics",
+        "confidence": 0.96,
+        "probabilities": {
+          "maintenance": 0,
+          "quality": 0,
+          "logistics": 0.97,
+          "human_review": 0.03
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 677,
+        "routing": {
+          "finalTeam": "logistics",
+          "reasonCode": "direct_route",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "holdout-human_review-01",
+      "report": "Not sure what's going on — someone mentioned an issue near station 7 earlier.",
+      "expectedModelChoice": "human_review",
+      "group": "holdout",
+      "rationale": "Vague secondhand report with insufficient information.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "human_review",
+        "confidence": 0.95,
+        "probabilities": {
+          "maintenance": 0.04,
+          "quality": 0,
+          "logistics": 0,
+          "human_review": 0.96
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 795,
+        "routing": {
+          "finalTeam": "human_review",
+          "reasonCode": "model_requested_review",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "holdout-human_review-02",
+      "report": "Scheduled downtime for calibration checks; no defects or faults reported during the stop.",
+      "expectedModelChoice": "human_review",
+      "group": "holdout",
+      "rationale": "Planned normal event with no reported fault.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "human_review",
+        "confidence": 1,
+        "probabilities": {
+          "maintenance": 0,
+          "quality": 0,
+          "logistics": 0,
+          "human_review": 1
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 229,
+        "routing": {
+          "finalTeam": "human_review",
+          "reasonCode": "model_requested_review",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    },
+    {
+      "id": "holdout-human_review-03",
+      "report": "Could be a machine problem or a quality issue with the incoming material — reports conflict.",
+      "expectedModelChoice": "human_review",
+      "group": "holdout",
+      "rationale": "Competing issues (equipment vs. material quality) without a clearly appropriate first owner.",
+      "outcome": {
+        "status": "success",
+        "modelChoice": "human_review",
+        "confidence": 0.98,
+        "probabilities": {
+          "maintenance": 0.01,
+          "quality": 0.01,
+          "logistics": 0,
+          "human_review": 0.98
+        },
+        "model": "jev-1.13.0",
+        "upstreamRoundTripMs": 293,
+        "routing": {
+          "finalTeam": "human_review",
+          "reasonCode": "model_requested_review",
+          "threshold": 0.7
+        },
+        "matchesExpected": true
+      }
+    }
+  ]
+}
