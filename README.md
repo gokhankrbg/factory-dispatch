@@ -2,7 +2,7 @@
 
 Factory Dispatch is a small English-language demo that routes synthetic
 manufacturing incident reports to the team that should assess them
-first — Maintenance, Quality, Logistics, or Human Review — using real
+first — Maintenance, Quality, Logistics, or Human Review , using real
 calls to TypeSafe AI's Jev API. It runs entirely locally, against your
 own API key; there is no hosted deployment.
 
@@ -18,7 +18,7 @@ why they differ when they do.
 The question and team criteria live in one place
 (`src/lib/team-question.ts`), shared by the live app and the evaluation
 runner. It asks which team should **first assess** an incident, not
-which team will ultimately diagnose the root cause — an equipment
+which team will ultimately diagnose the root cause , an equipment
 symptom with an unknown cause still routes to Maintenance, not Human
 Review.
 
@@ -26,10 +26,10 @@ Review.
 this order:
 
 1. If the model's own choice is `human_review`, the final team is
-   Human Review — a **model-selected review**.
+   Human Review , a **model-selected review**.
 2. Otherwise, if confidence is below `REVIEW_CONFIDENCE_THRESHOLD`
-   (**0.70** — confidence exactly at the threshold still routes
-   directly), the final team is Human Review — a **below-threshold
+   (**0.70** , confidence exactly at the threshold still routes
+   directly), the final team is Human Review , a **below-threshold
    review**.
 3. Otherwise, the final team is the model's recommended team, applied
    directly.
@@ -38,7 +38,7 @@ this order:
 proven safety threshold.** The model's original recommendation,
 confidence, and full probabilities are always preserved alongside the
 final routing decision. Provider errors and malformed upstream
-responses remain errors — they are never turned into a fabricated
+responses remain errors , they are never turned into a fabricated
 successful Human Review result.
 
 ## How it works
@@ -124,12 +124,12 @@ a request or resets session data):
   and a collapsible "About this demo" disclosure for longer caveats.
 
 **Run live demo** submits 8 fixed synthetic reports
-(`src/lib/demo-fixture.ts` — report text and ids only, never imported
+(`src/lib/demo-fixture.ts` , report text and ids only, never imported
 from the evaluation dataset or its expected labels) through the real
 `/api/analyze` endpoint, one at a time, updating the UI the instant each
 real response arrives. A **Pacing** control (editable only while idle)
 sets the display-only pause between results — **Presentation** (5000 ms)
-or **Fast** (300 ms) — which never affects the measured API latency.
+or **Fast** (300 ms) , which never affects the measured API latency.
 **Stop demo** lets any in-flight request finish and record its result
 once, or cancels an in-progress pause immediately; either way, no
 further requests are scheduled, and the controls stay locked until
@@ -139,9 +139,9 @@ one analysis request is ever in flight at a time.
 
 Clicking any queue card or activity item selects that incident and
 shows its full decision (report, model recommendation, final routing,
-probabilities, threshold, model id, API round-trip time) — this never
+probabilities, threshold, model id, API round-trip time) , this never
 makes a new request or changes session metrics. Human Review queue
-cards show a compact badge for *why* — "Model requested review" or
+cards show a compact badge for *why* , "Model requested review" or
 "Below threshold" — derived from the actual stored routing reason, plus
 the original model recommendation and confidence for below-threshold
 cases. Not every Human Review outcome comes from a low-confidence
@@ -159,7 +159,7 @@ npm run evaluate -- --group holdout
 ```
 
 An explicit `--group` is required. Each run makes real, sequential
-requests against the TypeSafe API (no retries) — real API usage, same
+requests against the TypeSafe API (no retries) , real API usage, same
 as the live app — using the exact same question, response validation,
 timeout, and routing policy as `/api/analyze`. It stops early, saving
 partial results, on missing configuration, authentication failure, or a
@@ -168,7 +168,7 @@ report pair under `evaluation/results/` (git-ignored, never overwritten).
 
 Development cases may inform later revisions to the question, criteria,
 or threshold. Holdout cases must stay unchanged while tuning against the
-development group — once a holdout run has informed a change, it's no
+development group , once a holdout run has informed a change, it's no
 longer an untouched check. See `evaluation/README.md` for the dataset
 and metric definitions, and **[`docs/evaluation.md`](docs/evaluation.md)
 for one real, actual run of each group** with real values (dates, model
@@ -183,7 +183,7 @@ confidence-threshold routing actually occurred).
   human-reviewable expectations, not verified ground truth.
 - **Confidence is not accuracy.** A high-confidence recommendation is
   not a guarantee of correctness, and Human Review does not catch every
-  incorrect decision — it's a routing destination, not a severity or
+  incorrect decision , it's a routing destination, not a severity or
   emergency flag.
 - **No equipment control.** This is a routing demonstration only; it
   does not read from, write to, or control any real equipment.
